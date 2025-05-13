@@ -2,7 +2,7 @@
 
 # 🎥 Video Anonymization with EgoBlur
 
-This repository provides a pipeline to anonymize video datasets by blurring sensitive content (e.g., license plates) using the **EgoBlur** model.
+This repository provides a pipeline to anonymize video datasets by blurring sensitive content (e.g., license plates, faces) using the **EgoBlur** model.
 
 ## 🔎 What is This?
 With increasing privacy concerns and legal restrictions on visual data, it's essential to anonymize personally identifiable information in videos. This project uses **EgoBlur**, a vision model for responsible anonymization, to automatically detect and blur such information in a scalable and smart way.

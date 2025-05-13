@@ -69,7 +69,20 @@ Demo
 ![Demo](media/demo.gif)
 
 
-## 🔗 Citation
+
+## 🔗 Cite Our Paper
+```bibtex
+@misc{madjid2025emtvisualmultitaskbenchmark,
+      title={EMT: A Visual Multi-Task Benchmark Dataset for Autonomous Driving in the Arab Gulf Region}, 
+      author={Nadya Abdel Madjid and Murad Mebrahtu and Abdelmoamen Nasser and Bilal Hassan and Naoufel Werghi and Jorge Dias and Majid Khonji},
+      year={2025},
+      eprint={2502.19260},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2502.19260}, 
+}
+```
+## 🔗 References
 ```bibtex
 @misc{raina2023egoblurresponsibleinnovationaria,
       title={EgoBlur: Responsible Innovation in Aria}, 
@@ -81,7 +94,6 @@ Demo
       url={https://arxiv.org/abs/2308.13093}, 
 }
 ```
-
 ---
 
 Developed with ❤️ for responsible AI research.

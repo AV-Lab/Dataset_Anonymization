@@ -45,7 +45,7 @@ Make sure to place the model checkpoint `ego_blur_lp.jit` under `models/`.
 ```
 
 ## ⚖️ Pipeline Overview
-![Flowchart](docs/blurring_pipeline.png)
+![Flowchart](docs/Flowchart.jpg)
 
 > **Note:** You can generate this flowchart using `TikZ` or use the pre-exported PNG in `docs/`.
 

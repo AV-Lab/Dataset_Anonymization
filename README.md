@@ -65,12 +65,9 @@ Make sure to place the model checkpoint `ego_blur_lp.jit` under `models/`.
 ## 🎥 Sample Results
 > Before vs After blurring visualizations and sample video outputs
 
-Add demo videos here (MP4 or GIF):
-```
-videos/
-├── original.mp4
-├── blurred.mp4
-```
+Demo
+![Demo](media/demo.gif)
+
 
 ## 🔗 Citation
 ```bibtex

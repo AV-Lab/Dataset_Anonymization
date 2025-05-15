@@ -11,10 +11,11 @@ from ego_blur_utils_eliptical import eliptical_blur_image_array  # Your utility 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 FRAMES_DIR = os.path.join(ROOT_DIR, 'frames')
 MODELS_DIR = os.path.join(ROOT_DIR, 'models')
-OUTPUT_DIR = os.path.join(ROOT_DIR, 'blurred_video_054604')
+OUTPUT_DIR = os.path.join(ROOT_DIR, 'blurred_video_054907')
 
-ANNOTATION_FILENAME = 'video_054604.txt'
+# ANNOTATION_FILENAME = 'video_054604.txt'
 # ANNOTATION_FILENAME = 'video_220047.txt'
+ANNOTATION_FILENAME = 'video_054907.txt'
 
 ANNOTATION_PATH = os.path.join(ROOT_DIR, 'annotations', 'annotations', 'tracking_annotations', 'gmot', ANNOTATION_FILENAME )
 
@@ -47,7 +48,8 @@ video_folders = sorted([f for f in os.listdir(FRAMES_DIR) if os.path.isdir(os.pa
 if not video_folders:
     print("❌ No video folders found in /frames")
 else:
-    video_name = video_folders[0]
+    video_name = video_folders[1]
+    # video_name = video_folders[0]
     # video_name = video_folders[-1]
     input_folder = os.path.join(FRAMES_DIR, video_name)
     output_folder = os.path.join(OUTPUT_DIR, video_name)

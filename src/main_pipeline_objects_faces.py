@@ -33,6 +33,15 @@ video_index_map = {
     'video_214547': 18,
     'video_220047': 19
 }
+# faces_plates_vds=[
+# 155425,
+# 210906,
+# 294647,
+# 204347,
+# 143739,
+# 151901,
+# 160902-161205]
+
 selected_video = 'video_141432-141733'
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'blurred_video_'+str(selected_video))
 

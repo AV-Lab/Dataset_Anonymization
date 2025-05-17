@@ -10,7 +10,6 @@ from ego_blur_utils_faces import blur_image_array_faces
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 FRAMES_DIR = os.path.join(ROOT_DIR, 'frames')
 MODELS_DIR = os.path.join(ROOT_DIR, 'models')
-OUTPUT_DIR = os.path.join(ROOT_DIR, 'blurred_video_054907')
 
 video_index_map = {
     'video_054604': 0,
@@ -35,6 +34,7 @@ video_index_map = {
     'video_220047': 19
 }
 selected_video = 'video_141432-141733'
+OUTPUT_DIR = os.path.join(ROOT_DIR, 'blurred_video_'+str(selected_video))
 
 ANNOTATION_FILENAME = str(selected_video+'.txt')   # v2
 # ANNOTATION_FILENAME = 'video_115533.txt'   # v2

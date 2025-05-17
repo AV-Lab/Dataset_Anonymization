@@ -58,6 +58,20 @@ def blur_image_array_faces(
         img_fg = cv2.bitwise_and(image_fg, image_fg, mask=mask)
         return cv2.add(img_bg, img_fg)
 
+    def visualize_blur2(image, boxes):
+        image_fg = image.copy()
+        for box in boxes:
+            if scale_factor_detections != 1.0:
+                box = scale_box(box, image.shape[1], image.shape[0], scale_factor_detections)
+            x1, y1, x2, y2 = map(int, box)
+            if x2 > x1 and y2 > y1:
+                roi = image_fg[y1:y2, x1:x2]
+                # Larger kernel size for denser blur (must be odd)
+                kx = max(15, (x2 - x1) // 2 | 1)
+                ky = max(15, (y2 - y1) // 2 | 1)
+                blurred_roi = cv2.GaussianBlur(roi, (kx, ky), 0)
+                image_fg[y1:y2, x1:x2] = blurred_roi
+        return image_fg
     # Prepare input
     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     image_tensor = get_image_tensor(image_rgb.copy(), device)
@@ -69,4 +83,5 @@ def blur_image_array_faces(
     if lp_detector:
         detections += get_detections(lp_detector, image_tensor_copy, lp_model_score_threshold, nms_iou_threshold)
 
-    return visualize_blur(image.copy(), detections)
+    # return visualize_blur(image.copy(), detections)
+    return visualize_blur2(image.copy(), detections)

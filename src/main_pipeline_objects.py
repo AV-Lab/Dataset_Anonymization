@@ -13,9 +13,11 @@ FRAMES_DIR = os.path.join(ROOT_DIR, 'frames')
 MODELS_DIR = os.path.join(ROOT_DIR, 'models')
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'blurred_video_054907')
 
-# ANNOTATION_FILENAME = 'video_054604.txt'
-# ANNOTATION_FILENAME = 'video_220047.txt'
-ANNOTATION_FILENAME = 'video_054907.txt'
+# ANNOTATION_FILENAME = 'video_054604.txt' # v19
+# ANNOTATION_FILENAME = 'video_220047.txt' # v0
+# ANNOTATION_FILENAME = 'video_054907.txt' # v1
+ANNOTATION_FILENAME = 'video_115533.txt'   # v2
+
 
 ANNOTATION_PATH = os.path.join(ROOT_DIR, 'annotations', 'annotations', 'tracking_annotations', 'gmot', ANNOTATION_FILENAME )
 
@@ -43,12 +45,13 @@ with open(ANNOTATION_PATH, 'r') as file:
         bbox = (x, y, x + w, y + h)
         frame_objects.setdefault(frame_id, []).append((obj_id, bbox))
 
-# Use only the first video folder and first 10 frames
+####################### select the video index in the following part (after else statement)
 video_folders = sorted([f for f in os.listdir(FRAMES_DIR) if os.path.isdir(os.path.join(FRAMES_DIR, f))])
 if not video_folders:
     print("❌ No video folders found in /frames")
-else:
-    video_name = video_folders[1]
+else:  
+    video_name = video_folders[2] ############################### select the video index here
+    # video_name = video_folders[1]
     # video_name = video_folders[0]
     # video_name = video_folders[-1]
     input_folder = os.path.join(FRAMES_DIR, video_name)

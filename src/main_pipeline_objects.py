@@ -11,12 +11,47 @@ from ego_blur_utils_eliptical import eliptical_blur_image_array  # Your utility 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 FRAMES_DIR = os.path.join(ROOT_DIR, 'frames')
 MODELS_DIR = os.path.join(ROOT_DIR, 'models')
-OUTPUT_DIR = os.path.join(ROOT_DIR, 'blurred_video_054907')
 
 # ANNOTATION_FILENAME = 'video_054604.txt' # v19
 # ANNOTATION_FILENAME = 'video_220047.txt' # v0
 # ANNOTATION_FILENAME = 'video_054907.txt' # v1
-ANNOTATION_FILENAME = 'video_115533.txt'   # v2
+
+video_index_map = {
+    'video_054604': 0,
+    'video_054907': 1,
+    'video_115533': 2,
+    'video_115833': 3,
+    'video_122233': 4,
+    'video_125233': 5,
+    'video_131333': 6,
+    'video_141432-141733': 7,
+    'video_142911': 8,
+    'video_143739': 9,
+    'video_151901': 10,
+    'video_155425': 11,
+    'video_160325': 12,
+    'video_160902-161205': 13,
+    'video_174340': 14,
+    'video_204347': 15,
+    'video_204647': 16,
+    'video_210906': 17,
+    'video_214547': 18,
+    'video_220047': 19
+}
+# faces_plates_vds=[
+# 155425,
+# 210906,
+# 294647,
+# 204347,
+# 143739,
+# 151901,
+# 160902-161205]
+
+selected_video = 'video_115533'
+OUTPUT_DIR = os.path.join(ROOT_DIR, 'blurred_video_'+str(selected_video))
+
+ANNOTATION_FILENAME = str(selected_video+'.txt')   # v2
+
 
 
 ANNOTATION_PATH = os.path.join(ROOT_DIR, 'annotations', 'annotations', 'tracking_annotations', 'gmot', ANNOTATION_FILENAME )
@@ -50,7 +85,7 @@ video_folders = sorted([f for f in os.listdir(FRAMES_DIR) if os.path.isdir(os.pa
 if not video_folders:
     print("❌ No video folders found in /frames")
 else:  
-    video_name = video_folders[2] ############################### select the video index here
+    video_name = video_folders[video_index_map[selected_video]] ############################### select the video index here
     # video_name = video_folders[1]
     # video_name = video_folders[0]
     # video_name = video_folders[-1]
@@ -60,7 +95,7 @@ else:
 
     print(f"📂 Processing folder: {video_name}")
 
-    frame_files = sorted([f for f in os.listdir(input_folder) if f.lower().endswith(('.jpg', '.png'))])[0:-1]
+    frame_files = sorted([f for f in os.listdir(input_folder) if f.lower().endswith(('.jpg', '.png'))])[0:]
 
     for frame in tqdm(frame_files, desc=f"🚀 Tracking-Aware EgoBlur: {video_name}", unit="frame"):
         frame_index = int(os.path.splitext(frame)[0])

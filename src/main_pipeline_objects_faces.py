@@ -42,7 +42,7 @@ video_index_map = {
 # 151901,
 # 160902-161205]
 
-selected_video = 'video_141432-141733'
+selected_video = 'video_210906'
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'blurred_video_'+str(selected_video))
 
 ANNOTATION_FILENAME = str(selected_video+'.txt')   # v2

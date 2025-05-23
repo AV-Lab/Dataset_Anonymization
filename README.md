@@ -1,6 +1,6 @@
 # README.md
 
-# 🎥 Video Anonymization with EgoBlur
+# 1. 🎥 Video Anonymization with EgoBlur
 
 This repository provides a pipeline to anonymize video datasets by blurring sensitive content (e.g., license plates, faces) using the **EgoBlur** model.
 
@@ -17,12 +17,15 @@ With increasing privacy concerns and legal restrictions on visual data, it's ess
 Cited from:
 > Raina et al., "EgoBlur: Responsible Innovation in Aria", arXiv:2308.13093 ([link](https://arxiv.org/abs/2308.13093))
 
-## 🚀 Installation
+## 🚀 Installation (Skip Mobile SAM if verification GUI is not desired)
 ```bash
 git clone https://github.com/your-username/egoblur-anonymization
 cd egoblur-anonymization
 conda create -n ego_blur python=3.9
 conda activate ego_blur
+cd src
+git clone https://github.com/ChaoningZhang/MobileSAM.git
+pip install -e MobileSAM
 pip install -r requirements.txt
 ```
 
@@ -69,7 +72,49 @@ Demo
 ![Demo](media/demo.gif)
 
 
+# 2. Manual Verification User Interface
+After processing the frames automatically using EgoBlur, this blurring interfance that utilizes MobileSAM can be used for manual verification of blurred frames.
 
+---
+
+## Table of Contents
+
+1. [Features](#features)
+2. [Requirements](#requirements)
+3. [Directory Structure](#directory-structure)
+
+## Features
+
+- **Point-based blur**: Click on the image to apply a blur within the SAM-predicted mask.
+- **Rectangular blur**: Hold `Shift` and drag to select a rectangular region for blurring.
+- **Undo/Redo**: Quickly reverse or reapply edits via buttons or `Ctrl+Z` / `Ctrl+Y`.
+- **Image checklist**: View saved/unsaved status and jump to any image in the sequence.
+- **Keyboard navigation**: Use ←/→ to move between images.
+- **Saving Images**: Click save and next to save your changes.
+- **Laucnhing the app**: Use the following code to launch the app:
+```bash
+cd src
+python sam_blur_gui.py
+```
+
+To disable SAM clicks, use:
+```bash
+cd src
+python sam_blur_gui.py --disable-sam
+```
+
+
+## Directory Structure 
+This can be used separate from the previous pipeline in case manual blurring is desired. Data should be structured as follows:
+```
+.
+├── data/
+│   ├── raw/ # raw extracted frames
+│   ├── verify/ # blurred frames from EgoBlur pipeline. Place raw images here in case of manual blurring.
+│   ├── final/ # final blurred frames
+├── src/
+│   └── sam_blur_gui.py/   # extracted frames
+```
 ## 🔗 Cite Our Paper
 ```bibtex
 @misc{madjid2025emtvisualmultitaskbenchmark,
@@ -94,6 +139,13 @@ Demo
       url={https://arxiv.org/abs/2308.13093}, 
 }
 ```
+```bibtex
+@article{mobile_sam,
+  title={Faster Segment Anything: Towards Lightweight SAM for Mobile Applications},
+  author={Zhang, Chaoning and Han, Dongshen and Qiao, Yu and Kim, Jung Uk and Bae, Sung-Ho and Lee, Seungkyu and Hong, Choong Seon},
+  journal={arXiv preprint arXiv:2306.14289},
+  year={2023}
+}
+```
 ---
-
 Developed with ❤️ for responsible AI research.

@@ -353,12 +353,40 @@ class MainWindow(QMainWindow):
         self.update_status_label()
 
     def use_original(self):
+        # get the verify path relative to SEMI_BLURRED_DIR, e.g. "subdir/0123.png"
         rel_path = self.current_img_path.relative_to(SEMI_BLURRED_DIR)
-        original_path = ORIGINAL_DIR / rel_path
-        if original_path.exists():
-            self.image_label.use_original(original_path)
-        else:
-            QMessageBox.warning(self, "Not Found", "Original image not found.")
+        stem = rel_path.stem   # e.g. "0123"
+        suffix = rel_path.suffix
+
+        # parse out the integer frame number
+        try:
+            frame_num = int(stem)
+        except ValueError:
+            QMessageBox.warning(self, "Error", f"Cannot parse frame number from '{stem}'")
+            return
+
+        # look in the same subfolder under raw/
+        search_dir = ORIGINAL_DIR / rel_path.parent
+        if not search_dir.exists():
+            QMessageBox.warning(self, "Not Found", f"Raw folder not found:\n{search_dir}")
+            return
+
+        # scan for any file whose stem, when int()-ed, == frame_num
+        for cand in search_dir.glob(f"*{suffix}"):
+            try:
+                if int(cand.stem) == frame_num:
+                    # found it!
+                    self.image_label.use_original(cand)
+                    return
+            except ValueError:
+                continue
+
+        # if we get here, no match
+        QMessageBox.warning(
+            self,
+            "Not Found",
+            f"No raw file matching frame {frame_num} in\n{search_dir}"
+        )
 
     def save_and_next(self):
         rel_path = self.current_img_path.relative_to(SEMI_BLURRED_DIR)

@@ -12,8 +12,7 @@ With increasing privacy concerns and legal restrictions on visual data, it's ess
 - Object ID tracking across frames using annotations
 - Adaptive multi-pass thresholding for robust detection
 - Dynamic cropping thresholds to skip tiny irrelevant regions
-
-## 📅 EgoBlur: Responsible Innovation in Aria
+-  Used EgoBlur a detection tool by Meta.
 Cited from:
 > Raina et al., "EgoBlur: Responsible Innovation in Aria", arXiv:2308.13093 ([link](https://arxiv.org/abs/2308.13093))
 
@@ -126,6 +125,17 @@ This can be used separate from the previous pipeline in case manual blurring is 
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2502.19260}, 
 }
+@INPROCEEDINGS{11428134,
+  author={Ahmad, Abdulrahman and Nasser, Abdelmoamen and Madjid, Nadya Abdel and Mebrahtu, Murad and Hassan, Bilal and Dias, Jorge and Khonji, Majid},
+  booktitle={2025 Advances in Science and Engineering Technology International Conferences (ASET)}, 
+  title={Priv-DATA: Privacy-Aware Dataset Anonymization Tool for Autonomous Vehicles Research}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-6},
+  keywords={Data privacy;Visualization;Systematics;Pedestrians;Object detection;Multitasking;Regulation;Information filtering;Autonomous vehicles;Information integrity;Datasets Tools;Dataset Anonymization;Autonomous Driving;Dataset Privacy;Object Detection},
+  doi={10.1109/ASET66891.2025.11428134}}
+
 ```
 ## 🔗 References
 ```bibtex
